@@ -1,5 +1,5 @@
 public class Complexe {
-	//constructeurs :
+	//builder :
 
 	  public Complexe(){
 	    a = 0;
@@ -26,12 +26,12 @@ public class Complexe {
 	  }
 
 
-	//attributs :
+	//parameters :
 
 	  private double a = 0;
 	  private double b = 0;
 
-	//acceseurs :
+	//access :
 
 	  public double getRe(){
 	    return a;
@@ -69,13 +69,13 @@ public class Complexe {
 	      }
 	    }
 
-	  System.out.println("erreur String complexe");
+	  System.out.println("error string with the complexe (" + a + " + " + b + ")");
 	  return "";
 	  }
 
-	//méthodes :
+	//functions :
 
-	  //comparatives :
+	  //comparaisons :
 
 	  public boolean egal(Complexe z){
 	    return z.getIm() == b && z.getRe() == a;
@@ -85,7 +85,7 @@ public class Complexe {
 		  return a.getRe() == b.getRe() && b.getIm() == a.getIm();
 	  }
 
-	  //additives :
+	  //additions :
 
 	  public Complexe plus(Complexe x){
 	    return new Complexe(a + x.getRe(), b + x.getIm());
@@ -95,15 +95,15 @@ public class Complexe {
 	    return new Complexe(a + x, b + x);
 	  }
 
-	  public Complexe moins(Complexe x){
+	  public Complexe minus(Complexe x){
 	    return new Complexe(a - x.getRe(), b - x.getIm());
 	  }
 
-	  public Complexe moins(double x){
+	  public Complexe minus(double x){
 	    return new Complexe(a - x, b - x);
 	  }
 
-	  //multiplicatives :
+	  //multiplication :
 
 	  public Complexe mult(Complexe x){
 	    return new Complexe(a*x.getRe() - b*x.getIm(), a*x.getIm() + b*x.getRe());
@@ -119,65 +119,45 @@ public class Complexe {
 
 	  public Complexe div(double x){
 	    if(x == 0){
-	        System.out.println("division par 0 impossible (au niveau du complexe : " + this + ")");
-	        System.exit(0);
+	        System.out.println("division by 0 is impossible with complexe : " + this + ")");
+	        return new Complexe(this);
 	      }
 	    return new Complexe(a/x , b/x);
 	  }
 
 	  public Complexe div(Complexe x){
 	    if(x.getIm() == 0 && x.getRe() == 0){
-	        System.out.println("division par 0 impossible (au niveau du complexe : " + this + ")");
-	        System.exit(0);
+	        System.out.println("division by 0 is impossible with complexe : " + this + ")");
+	        return new Complexe(this);
 	      }
 	      return new Complexe((a*x.getRe() + b*x.getIm())/(x.getRe()*x.getRe() + x.getIm()*x.getIm()) , (b*x.getRe() - a*x.getIm())/(x.getRe()*x.getRe() + x.getIm()*x.getIm()));
 	  }
 
-	  public Complexe pow(double x){
-	    if(x == 0){
-	      return new Complexe(1);
-	    }else{
-	      double argx = this.arg()*x % 3.141592;
-	      double modx = Math.pow(this.mod(), x);
-
-	      return new Complexe(modx*Math.cos(argx), modx*Math.sin(argx));
-	    }
-	  } 
-
-
-	  /*public Complexe puis(int n){
+	   public Complexe puis(int n){
 	    if(n == 0){
 	      return new Complexe(1);
 	    } else if(n == 1){
 	      return new Complexe(this);
 	    }else if(n > 1){
-
 	      Complexe res1 = new Complexe(this);
 	      Complexe res2 = new Complexe(res1);
-
 	      for(int i = 1 ; i < n ; i++){
 	        res2 = res2.mult(res1);
 	      }
-
 	      return res2;
-
 	    }else{
-
 	      int m = -n;
 	      Complexe res1 = new Complexe(this);
 	      Complexe res2 = new Complexe(res1);
-	      Complexe un = new Complexe(1);
-
+	      Complexe one = new Complexe(1);
 	      for(int i = 1 ; i < m ; i++){
 	        res2 = res2.mult(res1);
 	      }
-
-	      return un.div(res2);
+	      return one.div(res2);
 	    }
-	  }*/
+	  }
 
-
-	  //conjugé :
+	  //conjugate :
 
  	  public Complexe conj(){
 	      return new Complexe(a, -b);
@@ -188,10 +168,10 @@ public class Complexe {
 	  public double mod(){
 	    return Math.sqrt(a*a + b*b);
 	  }
+/* 
+	  //angle :
 
-	  //argument :
-
-	  public double arg(){
+	  public double arg(){	//to improve, this is not working perfectly
 	    if(a > 0 && b > 0){
 	      return Math.acos(a/this.mod());
 	    }else if(a < 0 && b < 0){
@@ -206,9 +186,7 @@ public class Complexe {
 	      System.out.println("erreur calcul argument du complexe : " + this);
 	      return 0;
 	    }
-
-
-
-
-	  }
+	}
+*/
+  
 }
