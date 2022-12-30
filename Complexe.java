@@ -133,28 +133,8 @@ public class Complexe {
 	      return new Complexe((a*x.getRe() + b*x.getIm())/(x.getRe()*x.getRe() + x.getIm()*x.getIm()) , (b*x.getRe() - a*x.getIm())/(x.getRe()*x.getRe() + x.getIm()*x.getIm()));
 	  }
 
-	   public Complexe puis(int n){
-	    if(n == 0){
-	      return new Complexe(1);
-	    } else if(n == 1){
-	      return new Complexe(this);
-	    }else if(n > 1){
-	      Complexe res1 = new Complexe(this);
-	      Complexe res2 = new Complexe(res1);
-	      for(int i = 1 ; i < n ; i++){
-	        res2 = res2.mult(res1);
-	      }
-	      return res2;
-	    }else{
-	      int m = -n;
-	      Complexe res1 = new Complexe(this);
-	      Complexe res2 = new Complexe(res1);
-	      Complexe one = new Complexe(1);
-	      for(int i = 1 ; i < m ; i++){
-	        res2 = res2.mult(res1);
-	      }
-	      return one.div(res2);
-	    }
+	   public Complexe puis(double x){
+	    return new Complexe(Math.pow(mod(), x)*cos(arg() + x), Math.pow(mod(), x)*sin(arg() + x));
 	  }
 
 	  //conjugate :
@@ -171,7 +151,7 @@ public class Complexe {
  
 	  //angle :
 
-	  public double arg(){	//to improve, this is not working perfectly
+	  public double arg(){
 	    return atan2(b, a);
 	}
 
