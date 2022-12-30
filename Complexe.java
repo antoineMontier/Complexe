@@ -168,25 +168,12 @@ public class Complexe {
 	  public double mod(){
 	    return Math.sqrt(a*a + b*b);
 	  }
-/* 
+ 
 	  //angle :
 
 	  public double arg(){	//to improve, this is not working perfectly
-	    if(a > 0 && b > 0){
-	      return Math.acos(a/this.mod());
-	    }else if(a < 0 && b < 0){
-	      return - Math.acos(a/this.mod());
-	    }else if (a < 0 && b > 0){
-	      return Math.acos(a/this.mod());
-	    }else if (a > 0 && b < 0){
-	      return Math.asin(b/this.mod());
-	    }else if(a == 0 && b == 0){
-	      return 0;
-	    }else{
-	      System.out.println("erreur calcul argument du complexe : " + this);
-	      return 0;
-	    }
+	    return atan2(b, a);
 	}
-*/
+
   
 }
